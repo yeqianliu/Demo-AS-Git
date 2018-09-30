@@ -1,6 +1,7 @@
 package com.example.administrator.rate;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -37,14 +38,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //opencfg.setOnClickListener(this);
         //onClick属性：openOne
 
-        SharedPreferences sharedPreferences = getSharedPreferences("myrate", 0);
-
+        SharedPreferences sharedPreferences = getSharedPreferences("myrate", Context.MODE_PRIVATE);
         dollarRate = sharedPreferences.getFloat("dollar_rate",0.0f);
         euroRate = sharedPreferences.getFloat("euro_rate",0.0f);
         wonRate = sharedPreferences.getFloat("won_rate",0.0f);
-        //Log.i(TAG, "onCreate: sp dollarRate=" + dollarRate);
-        //Log.i(TAG, "onCreate: sp euroRate=" + euroRate);
-        //Log.i(TAG, "onCreate: sp wonRate=" + wonRate);
+        Log.i(TAG, "onCreate: sp dollarRate=" + dollarRate);
+        Log.i(TAG, "onCreate: sp euroRate=" + euroRate);
+        Log.i(TAG, "onCreate: sp wonRate=" + wonRate);
 
 
     }
@@ -98,5 +98,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.i(TAG, "onActivityResult: wonRate=" + wonRate);
         }
         super.onActivityResult(requestCode, resultCode, data);
+
+        //将新设置的汇率写到SP⾥
+        SharedPreferences sharedPreferences = getSharedPreferences("myrate", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putFloat("dollar_rate",dollarRate);
+        editor.putFloat("euro_rate",euroRate);
+        editor.putFloat("won_rate",wonRate);
+        editor.commit();
+        Log.i(TAG, "onActivityResult: 数据已保存到sharedPreferences");
     }
 }

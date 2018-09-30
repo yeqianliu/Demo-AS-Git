@@ -1,6 +1,7 @@
 package com.example.administrator.rate;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,7 +51,7 @@ public class ConfigActivity extends AppCompatActivity implements View.OnClickLis
 
     public void save(View v) {
         Log.i(TAG, "save: ");
-//获取新的值
+        //获取新的值
         float newDollar = Float.parseFloat(dollarText.getText().toString());
         float newEuroi = Float.parseFloat(euroText.getText().toString());
         float newWon = Float.parseFloat(wonText.getText().toString());
@@ -67,6 +68,8 @@ public class ConfigActivity extends AppCompatActivity implements View.OnClickLis
         bdl.putFloat("key_won",newWon);
         intent.putExtras(bdl);
         setResult(2,intent);
+
+
         //返回到调用页⾯
         finish();
     }
