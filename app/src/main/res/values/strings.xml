@@ -7,4 +7,12 @@
     <string name="rmb_hint_label">Input RMB</string>
     <string name="btn_opencfg_label">汇率配置</string>
     <string name="btn_save_label">保存</string>
+
+    <string name="score3">+3 POINTS</string>
+    <string name="score2">+2 POINTS</string>
+    <string name="freethrow">FREE THROW</string>
+    <string name="reset">RESET</string>
+    <string name="TeamA">Team A</string>
+    <string name="TeamB">Team B</string>
+    <string name="orginscore">0</string>
 </resources>
